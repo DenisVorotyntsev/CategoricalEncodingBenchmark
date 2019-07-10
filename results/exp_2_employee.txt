@@ -1,0 +1,26 @@
+info{'experiment_description': 'Check single encoder, Single validation', 'train_shape': (19661, 10), 'test_shape': (13108, 10), 'mean_target_train': 0.9427292609735008, 'mean_target_test': 0.9411809581934696, 'num_cat_cols': 9, 'cat_cols_info': {'cat_0': {'num_uniq_train': 5734, 'num_uniq_test': 4500, 'number_of_new_test': 1784, 'fraction_of_new_test': 0.16570033567287154}, 'cat_1': {'num_uniq_train': 3755, 'num_uniq_test': 3332, 'number_of_new_test': 488, 'fraction_of_new_test': 0.05363137015563015}, 'cat_2': {'num_uniq_train': 123, 'num_uniq_test': 122, 'number_of_new_test': 5, 'fraction_of_new_test': 0.00045773573390296}, 'cat_3': {'num_uniq_train': 169, 'num_uniq_test': 167, 'number_of_new_test': 8, 'fraction_of_new_test': 0.00068660360085444}, 'cat_4': {'num_uniq_train': 436, 'num_uniq_test': 422, 'number_of_new_test': 13, 'fraction_of_new_test': 0.00137320720170888}, 'cat_5': {'num_uniq_train': 327, 'num_uniq_test': 304, 'number_of_new_test': 16, 'fraction_of_new_test': 0.0022886786695148}, 'cat_6': {'num_uniq_train': 2035, 'num_uniq_test': 1728, 'number_of_new_test': 323, 'fraction_of_new_test': 0.032270369240158685}, 'cat_7': {'num_uniq_train': 66, 'num_uniq_test': 64, 'number_of_new_test': 1, 'fraction_of_new_test': 0.00022886786695148}, 'cat_8': {'num_uniq_train': 327, 'num_uniq_test': 304, 'number_of_new_test': 16, 'fraction_of_new_test': 0.0022886786695148}}}
+
+('HelmertEncoder',){'train_score': 0.9748148576401853, 'val_score': 0.8196400909385337, 'test_score': 0.834383920144889, 'time': 3404.133203983307, 'features_before_encoding': 10, 'features_after_encoding': 11850}
+
+('SumEncoder',){'train_score': 0.9542445914201843, 'val_score': 0.7996934577783295, 'test_score': 0.8052738974331638, 'time': 975.6884272098541, 'features_before_encoding': 10, 'features_after_encoding': 11832}
+
+('LeaveOneOutEncoder',){'train_score': 0.9886886916620901, 'val_score': 0.5552492653220051, 'test_score': 0.6120909789465263, 'time': 10.254571199417114, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('FrequencyEncoder',){'train_score': 0.9614140465706941, 'val_score': 0.7862367653850021, 'test_score': 0.8137548653902137, 'time': 18.031002521514893, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('MEstimateEncoder',){'train_score': 0.9477819358612123, 'val_score': 0.7111219221972089, 'test_score': 0.7352737281702033, 'time': 10.388001203536987, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('TargetEncoder',){'train_score': 0.99130380040288, 'val_score': 0.7830943658374135, 'test_score': 0.8149876464321734, 'time': 9.395052194595337, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('WOEEncoder',){'train_score': 0.9896390208746402, 'val_score': 0.8202215675836115, 'test_score': 0.8324586328157568, 'time': 15.733181238174438, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('BackwardDifferenceEncoder',){'train_score': 0.9797491650383433, 'val_score': 0.7452342505435648, 'test_score': 0.7569343407948863, 'time': 2423.059409379959, 'features_before_encoding': 10, 'features_after_encoding': 11832}
+
+('JamesSteinEncoder',){'train_score': 0.9939670160954087, 'val_score': 0.7503299893183563, 'test_score': 0.7816645004161661, 'time': 5.175995826721191, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('OrdinalEncoder',){'train_score': 0.9895855049771518, 'val_score': 0.8294694854323016, 'test_score': 0.8274354127761154, 'time': 17.009997606277466, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('CatBoostEncoder',){'train_score': 0.8644959338907572, 'val_score': 0.828472949871075, 'test_score': 0.849834369359325, 'time': 8.191504716873169, 'features_before_encoding': 10, 'features_after_encoding': 10}
+
+('CatBoostEncoderShuffle',){'train_score': 0.7457527395734334, 'val_score': 0.532577224677117, 'test_score': 0.4989668125797494, 'time': 228.62294268608093, 'features_before_encoding': 10, 'features_after_encoding': 10}
+

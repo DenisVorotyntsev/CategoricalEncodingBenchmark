@@ -1,0 +1,26 @@
+info{'experiment_description': 'Check single encoder, Single validation', 'train_shape': (29305, 15), 'test_shape': (19537, 15), 'mean_target_train': 0.23750213274185292, 'mean_target_test': 0.24195116957567692, 'num_cat_cols': 8, 'cat_cols_info': {'cat_1': {'num_uniq_train': 9, 'num_uniq_test': 9, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_3': {'num_uniq_train': 16, 'num_uniq_test': 16, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_5': {'num_uniq_train': 7, 'num_uniq_test': 7, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_6': {'num_uniq_train': 15, 'num_uniq_test': 15, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_7': {'num_uniq_train': 6, 'num_uniq_test': 6, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_8': {'num_uniq_train': 5, 'num_uniq_test': 5, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_9': {'num_uniq_train': 2, 'num_uniq_test': 2, 'number_of_new_test': 0, 'fraction_of_new_test': 0.0}, 'cat_13': {'num_uniq_train': 41, 'num_uniq_test': 42, 'number_of_new_test': 1, 'fraction_of_new_test': 5.1184931156267594e-05}}}
+
+('HelmertEncoder',){'train_score': 0.9495630710234361, 'val_score': 0.926354831367042, 'test_score': 0.9297148051326962, 'time': 38.97255873680115, 'features_before_encoding': 15, 'features_after_encoding': 117}
+
+('SumEncoder',){'train_score': 0.9501000928651528, 'val_score': 0.9259549984182222, 'test_score': 0.9290367931033054, 'time': 31.047743320465088, 'features_before_encoding': 15, 'features_after_encoding': 101}
+
+('LeaveOneOutEncoder',){'train_score': 0.9999983382490619, 'val_score': 0.5024543759950412, 'test_score': 0.5181813870552989, 'time': 7.9055259227752686, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('FrequencyEncoder',){'train_score': 0.9530562704232606, 'val_score': 0.9263019768365985, 'test_score': 0.9292661348807624, 'time': 24.291741609573364, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('MEstimateEncoder',){'train_score': 0.9491205268558242, 'val_score': 0.9258281829101112, 'test_score': 0.9289740492611653, 'time': 19.797695875167847, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('TargetEncoder',){'train_score': 0.9502885358234117, 'val_score': 0.9264361707599994, 'test_score': 0.9293010814510062, 'time': 22.76402521133423, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('WOEEncoder',){'train_score': 0.9511215944755442, 'val_score': 0.9263901802455228, 'test_score': 0.9293718959296423, 'time': 21.620522260665894, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('BackwardDifferenceEncoder',){'train_score': 0.9516099392719448, 'val_score': 0.9258122204561179, 'test_score': 0.929327100326011, 'time': 37.37689208984375, 'features_before_encoding': 15, 'features_after_encoding': 101}
+
+('JamesSteinEncoder',){'train_score': 0.951573963469289, 'val_score': 0.9263787670105426, 'test_score': 0.9291502034014661, 'time': 21.658886909484863, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('OrdinalEncoder',){'train_score': 0.9509224787360179, 'val_score': 0.9265481008376995, 'test_score': 0.9298904164691265, 'time': 23.644933700561523, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('CatBoostEncoder',){'train_score': 0.9544236041050995, 'val_score': 0.9252774219849126, 'test_score': 0.9292214249830052, 'time': 23.107444286346436, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
+('CatBoostEncoderShuffle',){'train_score': 0.9164931674106166, 'val_score': 0.8716544432527525, 'test_score': 0.8780713521401543, 'time': 27.625181436538696, 'features_before_encoding': 15, 'features_after_encoding': 15}
+
