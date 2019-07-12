@@ -1,7 +1,37 @@
 # CategoricalEncodingBenchmark
 Benchmarking different approaches for categorical encoding  
 
-# Used datasets 
+# Reproducibility of results
+Used libraries: 
+
+```
+numpy==1.15.1
+pandas==0.23.4
+sklearn==0.20.3
+category_encoders==2.0.0
+lightgbm==2.2.3
+```
+
+To benchmark endoers for your dataset: 
+
+1. Process the dataset as in `prepare_datasets.ipynb`
+
+2. Add name of the dataset in `dataset_list` in `run_experiment.py`
+
+3. `python run_experiment.py`
+
+4. Run `show_results.ipynb`
+
+
+# Used datasets and raw scores 
+
+Table 1.1 Used datasets 
+
+All datasets except poverty_A(B,C) came from different domains; they have a different number of observations, number of categorical and numerical features. 
+The objective for all datasets - binary classification. 
+Preprocessing of datasets were simple: I removed all time-based columns from datasets. 
+Remaining columns were either categorical or numerical. 
+Details of the experiments could be found [in my blog post](google.com). 
 
 | Name | Total points | Train points | Test points | Number of features | Number of categorical features | Short description | 
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -18,99 +48,106 @@ Benchmarking different approaches for categorical encoding
 | [Poverty_B](https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/99/)   | 20.2k | 12.1k | 8.1k | 224 | 191 | Predict whether or not a given household for a given country is poor or not |
 | [Poverty_C](https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/99/)   | 29.9k | 17.9k | 11.9k  | 41  | 35 | Predict whether or not a given household for a given country is poor or not |
 
-# Raw scores 
+The ROC AUC scores for each dataset are presented in tables below. 
+*Note*: some experiments required too much memory to run, so some values are missing. 
 
-Table 1.1 None validation 
-
-|                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
-|:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
-| BackwardDifferenceEncoder |     0.645 |   0.855 |      0.501 |    0.744 |       0.6   |       0.648 |        |                 |        |       0.515 |       0.548 |       0.495 |
-| CatBoostEncoder           |     0.767 |   0.868 |      0.5   |    0.748 |       0.628 |       0.781 | 0.658  | 0.855           | 0.548  |       0.518 |       0.564 |       0.543 |
-| FrequencyEncoder          |     0.84  |   0.929 |      0.807 |    0.759 |       0.695 |       0.905 | 0.791  | 0.864           | 0.566  |       0.728 |       0.616 |       0.718 |
-| HelmertEncoder            |     0.84  |   0.93  |      0.83  |    0.76  |       0.7   |       0.908 |        |                 |        |       0.732 |       0.634 |       0.717 |
-| JamesSteinEncoder         |     0.72  |   0.869 |      0.5   |    0.749 |       0.605 |       0.798 | 0.659  | 0.852           | 0.543  |       0.492 |       0.53  |       0.484 |
-| LeaveOneOutEncoder        |     0.5   |   0.521 |      0.623 |    0.496 |       0.5   |       0.546 | 0.503  | 0.5             | 0.5    |       0.501 |       0.5   |       0.453 |
-| MEstimateEncoder          |     0.694 |   0.862 |      0.5   |    0.737 |       0.609 |       0.816 | 0.653  | 0.845           | 0.509  |       0.525 |       0.434 |       0.453 |
-| OrdinalEncoder            |     0.741 |   0.862 |      0.501 |    0.744 |       0.601 |       0.712 | 0.653  | 0.845           | 0.55   |       0.473 |       0.468 |       0.561 |
-| SumEncoder                |     0.84  |   0.929 |      0.805 |    0.759 |       0.694 |       0.907 |        |                 |        |       0.735 |       0.621 |       0.737 |
-| TargetEncoder             |     0.72  |   0.87  |      0.5   |    0.748 |       0.606 |       0.797 | 0.659  | 0.848           | 0.543  |       0.495 |       0.54  |       0.475 |
-| WOEEncoder                |     0.706 |   0.864 |      0.501 |    0.744 |       0.615 |       0.734 | 0.64   | 0.844           | 0.548  |       0.478 |       0.536 |       0.467 |
-
-Table 1.2 Single Validation
+Table 1.2 None validation 
 
 |                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
 |:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
-| BackwardDifferenceEncoder |     0.838 |   0.929 |      0.757 |    0.76  |       0.689 |       0.906 |        |                 |        |       0.732 |       0.615 |       0.711 |
-| CatBoostEncoder           |     0.839 |   0.929 |      0.85  |    0.759 |       0.695 |       0.892 | 0.79   | 0.865           | 0.584  |       0.743 |       0.69  |       0.733 |
-| FrequencyEncoder          |     0.839 |   0.929 |      0.814 |    0.759 |       0.694 |       0.906 | 0.79   | 0.863           | 0.582  |       0.73  |       0.613 |       0.72  |
-| HelmertEncoder            |     0.84  |   0.93  |      0.834 |    0.76  |       0.703 |       0.908 |        |                 |        |       0.73  |       0.637 |       0.72  |
-| JamesSteinEncoder         |     0.839 |   0.929 |      0.782 |    0.76  |       0.667 |       0.905 | 0.583  | 0.726           | 0.59   |       0.73  |       0.676 |       0.722 |
-| LeaveOneOutEncoder        |     0.5   |   0.518 |      0.612 |    0.5   |       0.5   |       0.54  | 0.468  | 0.5             | 0.5    |       0.51  |       0.5   |       0.496 |
-| MEstimateEncoder          |     0.839 |   0.929 |      0.735 |    0.759 |       0.696 |       0.905 | 0.588  | 0.595           | 0.595  |       0.73  |       0.649 |       0.708 |
-| OrdinalEncoder            |     0.84  |   0.93  |      0.827 |    0.759 |       0.692 |       0.908 | 0.781  | 0.847           | 0.603  |       0.734 |       0.663 |       0.742 |
-| SumEncoder                |     0.84  |   0.929 |      0.805 |    0.759 |       0.694 |       0.907 |        |                 |        |       0.735 |       0.621 |       0.737 |
-| TargetEncoder             |     0.839 |   0.929 |      0.815 |    0.76  |       0.67  |       0.906 | 0.704  | 0.713           | 0.589  |       0.729 |       0.674 |       0.721 |
-| WOEEncoder                |     0.839 |   0.929 |      0.832 |    0.76  |       0.68  |       0.906 | 0.717  | 0.839           | 0.59   |       0.728 |       0.674 |       0.722 |
+| BackwardDifferenceEncoder |    0.6454 |  0.8555 |     0.5006 |   0.7442 |      0.5997 |      0.6482 |        |                 |        |      0.5149 |      0.5484 |      0.4945 |
+| CatBoostEncoder           |    0.7666 |  0.868  |     0.5004 |   0.7478 |      0.6279 |      0.7811 | 0.6583 | 0.8549          | 0.5477 |      0.5179 |      0.5638 |      0.5427 |
+| FrequencyEncoder          |    0.8405 |  0.9291 |     0.807  |   0.7593 |      0.6949 |      0.9052 | 0.7907 | 0.8643          | 0.5656 |      0.7276 |      0.6164 |      0.7177 |
+| HelmertEncoder            |    0.8404 |  0.9297 |     0.83   |   0.7601 |      0.7001 |      0.9079 |        |                 |        |      0.7325 |      0.6343 |      0.7168 |
+| JamesSteinEncoder         |    0.7195 |  0.8688 |     0.5003 |   0.7485 |      0.6049 |      0.7984 | 0.6592 | 0.8516          | 0.5432 |      0.4918 |      0.5304 |      0.4836 |
+| LeaveOneOutEncoder        |    0.5    |  0.5214 |     0.6233 |   0.4957 |      0.5    |      0.5457 | 0.5027 | 0.5             | 0.5    |      0.5006 |      0.5002 |      0.4527 |
+| MEstimateEncoder          |    0.6944 |  0.8617 |     0.4998 |   0.7368 |      0.6086 |      0.8156 | 0.653  | 0.8448          | 0.5091 |      0.5254 |      0.434  |      0.4528 |
+| OrdinalEncoder            |    0.7409 |  0.8616 |     0.501  |   0.7445 |      0.6008 |      0.7124 | 0.6531 | 0.8448          | 0.5498 |      0.473  |      0.4683 |      0.5611 |
+| SumEncoder                |    0.8404 |  0.929  |     0.8053 |   0.7593 |      0.6944 |      0.9073 |        |                 |        |      0.7355 |      0.6206 |      0.7372 |
+| TargetEncoder             |    0.7195 |  0.8696 |     0.5003 |   0.7483 |      0.6064 |      0.7971 | 0.6594 | 0.8483          | 0.5428 |      0.4955 |      0.5401 |      0.4751 |
+| WOEEncoder                |    0.7056 |  0.8645 |     0.5012 |   0.7439 |      0.615  |      0.7345 | 0.6398 | 0.844           | 0.5485 |      0.478  |      0.5356 |      0.4671 |
 
-Table 1.3 Double Validation
+Table 1.3 Single Validation
+
+|                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
+|:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
+| BackwardDifferenceEncoder |    0.8382 |  0.9293 |     0.7569 |   0.7595 |      0.6894 |      0.9064 |        |                 |        |      0.7323 |      0.6151 |      0.7108 |
+| CatBoostEncoder           |    0.8392 |  0.9292 |     0.8498 |   0.7594 |      0.6951 |      0.8918 | 0.7901 | 0.8654          | 0.5844 |      0.7429 |      0.6902 |      0.7333 |
+| FrequencyEncoder          |    0.8392 |  0.9293 |     0.8138 |   0.7592 |      0.6937 |      0.9055 | 0.7902 | 0.8634          | 0.582  |      0.7302 |      0.6128 |      0.7195 |
+| HelmertEncoder            |    0.8404 |  0.9297 |     0.8344 |   0.7597 |      0.7027 |      0.9083 |        |                 |        |      0.7297 |      0.6374 |      0.7196 |
+| JamesSteinEncoder         |    0.8388 |  0.9292 |     0.7817 |   0.7597 |      0.667  |      0.9053 | 0.5835 | 0.726           | 0.5898 |      0.7303 |      0.6764 |      0.7217 |
+| LeaveOneOutEncoder        |    0.5    |  0.5182 |     0.6121 |   0.4997 |      0.5    |      0.5403 | 0.4682 | 0.5             | 0.5    |      0.5103 |      0.5    |      0.4959 |
+| MEstimateEncoder          |    0.8394 |  0.929  |     0.7353 |   0.7593 |      0.6957 |      0.9054 | 0.5877 | 0.5953          | 0.5946 |      0.7302 |      0.6493 |      0.7076 |
+| OrdinalEncoder            |    0.8404 |  0.9299 |     0.8274 |   0.7585 |      0.6917 |      0.9078 | 0.7809 | 0.8465          | 0.6034 |      0.7337 |      0.6635 |      0.742  |
+| SumEncoder                |    0.8404 |  0.929  |     0.8053 |   0.7593 |      0.6944 |      0.9073 |        |                 |        |      0.7355 |      0.6206 |      0.7372 |
+| TargetEncoder             |    0.8388 |  0.9293 |     0.815  |   0.7599 |      0.6702 |      0.9057 | 0.7042 | 0.713           | 0.5894 |      0.7292 |      0.6742 |      0.7207 |
+| WOEEncoder                |    0.8393 |  0.9294 |     0.8325 |   0.7599 |      0.6801 |      0.9056 | 0.7172 | 0.8391          | 0.5903 |      0.7279 |      0.6737 |      0.7224 |
+
+Table 1.4 Double Validation
 
 |                    |   telecom |   adult |   employee |   credit |   mortgages |   promotion |   kick |   kdd_upselling |   taxi |   poverty_A |   poverty_B |   poverty_C |
 |:-------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
-| CatBoostEncoder    |     0.839 |   0.929 |      0.853 |    0.759 |       0.697 |       0.906 |  0.79  |           0.863 |  0.603 |       0.742 |       0.69  |       0.734 |
-| FrequencyEncoder   |     0.837 |   0.922 |      0.556 |    0.755 |       0.658 |       0.875 |  0.766 |           0.855 |  0.566 |       0.687 |       0.604 |       0.696 |
-| JamesSteinEncoder  |     0.84  |   0.93  |      0.849 |    0.76  |       0.698 |       0.905 |  0.79  |           0.863 |  0.603 |       0.741 |       0.69  |       0.737 |
-| LeaveOneOutEncoder |     0.839 |   0.929 |      0.85  |    0.759 |       0.696 |       0.906 |  0.79  |           0.863 |  0.602 |       0.742 |       0.693 |       0.735 |
-| MEstimateEncoder   |     0.841 |   0.929 |      0.812 |    0.76  |       0.694 |       0.906 |  0.788 |           0.863 |  0.598 |       0.737 |       0.68  |       0.72  |
-| TargetEncoder      |     0.839 |   0.929 |      0.854 |    0.76  |       0.695 |       0.906 |  0.791 |           0.864 |  0.603 |       0.741 |       0.69  |       0.735 |
-| WOEEncoder         |     0.84  |   0.929 |      0.824 |    0.76  |       0.698 |       0.904 |  0.79  |           0.863 |  0.601 |       0.741 |       0.691 |       0.734 |
-
+| CatBoostEncoder    |    0.8394 |  0.9293 |     0.8529 |   0.7592 |      0.6967 |      0.9056 | 0.7899 |          0.8633 | 0.6031 |      0.7418 |      0.6902 |      0.7343 |
+| FrequencyEncoder   |    0.8371 |  0.9221 |     0.5563 |   0.755  |      0.6582 |      0.8749 | 0.7655 |          0.8551 | 0.5657 |      0.6873 |      0.6037 |      0.6961 |
+| JamesSteinEncoder  |    0.8398 |  0.9296 |     0.8489 |   0.7598 |      0.6981 |      0.905  | 0.7901 |          0.8628 | 0.6033 |      0.7412 |      0.6895 |      0.7366 |
+| LeaveOneOutEncoder |    0.8393 |  0.9295 |     0.8496 |   0.7595 |      0.6963 |      0.9055 | 0.7902 |          0.8635 | 0.602  |      0.7416 |      0.6931 |      0.7345 |
+| MEstimateEncoder   |    0.8405 |  0.9292 |     0.8125 |   0.7597 |      0.6939 |      0.9063 | 0.7881 |          0.863  | 0.5984 |      0.7375 |      0.6801 |      0.7204 |
+| TargetEncoder      |    0.8393 |  0.9294 |     0.8537 |   0.7596 |      0.6954 |      0.9057 | 0.7909 |          0.8643 | 0.6025 |      0.7415 |      0.6903 |      0.7352 |
+| WOEEncoder         |    0.8401 |  0.9294 |     0.824  |   0.7599 |      0.6977 |      0.9041 | 0.7905 |          0.8631 | 0.6011 |      0.7407 |      0.6911 |      0.7345 |
 
 # Results
 
+To determine the best encoder, I scaled the ROC AUC scores of each dataset (min-max scale) and then averaged results among the encoder. 
+The obtained result represents the average performance score for each encoder (higher is better). 
+The encoders performance scores for each type of validation are shown in tables 2.1–2.3. 
+
+
+To determine the best validation strategy, I compared the top score of each dataset for each type of validation. 
+The scores improvement (top score for a dataset and an average score for encoder) are shown in table 2.4 and 2.5 below.
 
 Table 2.1 Encoders performance scores - None Validation
 
-|                           | None Validation |
-|:--------------------------|:------:|
-| HelmertEncoder            | 0.952 |
-| SumEncoder                | 0.943 |
-| FrequencyEncoder          | 0.918 |
-| CatBoostEncoder           | 0.573 |
-| TargetEncoder             | 0.517 |
-| JamesSteinEncoder         | 0.516 |
-| OrdinalEncoder            | 0.496 |
-| WOEEncoder                | 0.490  |
-| MEstimateEncoder          | 0.450  |
-| BackwardDifferenceEncoder | 0.413 |
-| LeaveOneOutEncoder        | 0.070  |
+|                           |      None Validation |
+|:--------------------------|:-------:|
+| HelmertEncoder            | 0.9517 |
+| SumEncoder                | 0.9434 |
+| FrequencyEncoder          | 0.9176 |
+| CatBoostEncoder           | 0.5728 |
+| TargetEncoder             | 0.5174 |
+| JamesSteinEncoder         | 0.5162 |
+| OrdinalEncoder            | 0.4964 |
+| WOEEncoder                | 0.4905 |
+| MEstimateEncoder          | 0.4501 |
+| BackwardDifferenceEncoder | 0.4128 |
+| LeaveOneOutEncoder        | 0.0697 |
 
 Table 2.2 Encoders performance scores - Single Validation
 
-|                           | Single Validation |
-|:--------------------------|:------:|
-| CatBoostEncoder           | 0.973 |
-| OrdinalEncoder            | 0.969 |
-| HelmertEncoder            | 0.956 |
-| SumEncoder                | 0.943 |
-| WOEEncoder                | 0.933 |
-| FrequencyEncoder          | 0.931 |
-| BackwardDifferenceEncoder | 0.911 |
-| TargetEncoder             | 0.891 |
-| JamesSteinEncoder         | 0.856 |
-| MEstimateEncoder          | 0.819 |
-| LeaveOneOutEncoder        | 0.073 |
+|                           |      Single Validation |
+|:--------------------------|:-------:|
+| CatBoostEncoder           | 0.9726 |
+| OrdinalEncoder            | 0.9694 |
+| HelmertEncoder            | 0.9558 |
+| SumEncoder                | 0.9434 |
+| WOEEncoder                | 0.9326 |
+| FrequencyEncoder          | 0.9315 |
+| BackwardDifferenceEncoder | 0.9108 |
+| TargetEncoder             | 0.8915 |
+| JamesSteinEncoder         | 0.8555 |
+| MEstimateEncoder          | 0.8189 |
+| LeaveOneOutEncoder        | 0.0729 |
 
 Table 2.3 Encoders performance scores - Double Validation
 
-|                    | Double Validation |
-|:-------------------|:------:|
-| JamesSteinEncoder  | 0.992 |
-| CatBoostEncoder    | 0.992 |
-| TargetEncoder      | 0.992 |
-| LeaveOneOutEncoder | 0.991 |
-| WOEEncoder         | 0.984 |
-| MEstimateEncoder   | 0.969 |
-| FrequencyEncoder   | 0.802 |
+|                    |      Double Validation |
+|:-------------------|:-------:|
+| JamesSteinEncoder  | 0.9918 |
+| CatBoostEncoder    | 0.9917 |
+| TargetEncoder      | 0.9916 |
+| LeaveOneOutEncoder | 0.9909 |
+| WOEEncoder         | 0.9838 |
+| MEstimateEncoder   | 0.9686 |
+| FrequencyEncoder   | 0.8018 |
 
 Table 2.4 Top score improvement (percent)
 
