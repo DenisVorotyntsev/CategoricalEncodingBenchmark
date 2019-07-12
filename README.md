@@ -34,7 +34,7 @@ All datasets except poverty_A(B,C) came from different domains; they have a diff
 The objective for all datasets - binary classification. 
 Preprocessing of datasets were simple: I removed all time-based columns from datasets. 
 Remaining columns were either categorical or numerical. 
-Details of the experiments could be found [in my blog post](google.com). 
+Details of the experiments could be found [in my blog post](www.google.com). 
 
 **Table 1.1** Used datasets 
 
@@ -56,7 +56,7 @@ Details of the experiments could be found [in my blog post](google.com).
 The ROC AUC scores for each dataset are presented in tables below. 
 **Note**: some experiments required too much memory to run, so some values are missing. 
 
-**Table 1.2** None validation 
+**Table 1.2** ROC AUC scores for None Validation 
 
 |                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
 |:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
@@ -72,7 +72,7 @@ The ROC AUC scores for each dataset are presented in tables below.
 | TargetEncoder             |    0.7195 |  0.8696 |     0.5003 |   0.7483 |      0.6064 |      0.7971 | 0.6594 | 0.8483          | 0.5428 |      0.4955 |      0.5401 |      0.4751 |
 | WOEEncoder                |    0.7056 |  0.8645 |     0.5012 |   0.7439 |      0.615  |      0.7345 | 0.6398 | 0.844           | 0.5485 |      0.478  |      0.5356 |      0.4671 |
 
-**Table 1.3** Single Validation
+**Table 1.3** ROC AUC scores for Single Validation
 
 |                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
 |:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
@@ -88,7 +88,7 @@ The ROC AUC scores for each dataset are presented in tables below.
 | TargetEncoder             |    0.8388 |  0.9293 |     0.815  |   0.7599 |      0.6702 |      0.9057 | 0.7042 | 0.713           | 0.5894 |      0.7292 |      0.6742 |      0.7207 |
 | WOEEncoder                |    0.8393 |  0.9294 |     0.8325 |   0.7599 |      0.6801 |      0.9056 | 0.7172 | 0.8391          | 0.5903 |      0.7279 |      0.6737 |      0.7224 |
 
-**Table 1.4** Double Validation
+**Table 1.4** ROC AUC scores for Double Validation
 
 |                    |   telecom |   adult |   employee |   credit |   mortgages |   promotion |   kick |   kdd_upselling |   taxi |   poverty_A |   poverty_B |   poverty_C |
 |:-------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
