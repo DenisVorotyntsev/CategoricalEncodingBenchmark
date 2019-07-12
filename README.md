@@ -34,7 +34,7 @@ All datasets except poverty_A(B,C) came from different domains; they have a diff
 The objective for all datasets - binary classification. 
 Preprocessing of datasets were simple: I removed all time-based columns from datasets. 
 Remaining columns were either categorical or numerical. 
-Details of the experiments could be found [in my blog post](www.google.com). 
+Details of the experiments could be found [in my blog post](https://www.google.com). 
 
 **Table 1.1** Used datasets 
 
