@@ -29,6 +29,7 @@ class Model:
         self.models_list = []
         self.scores_list_train = []
         self.scores_list_val = []
+        self.models_trees = []
 
     def fit(self, X: pd.DataFrame, y: np.array) -> tuple:
         # process cat cols
@@ -62,6 +63,7 @@ class Model:
             model = LGBMClassifier(**self.model_params)
             model.fit(X_train, y_train, eval_set=[(X_train, y_train), (X_val, y_val)],
                       verbose=100, early_stopping_rounds=100)
+            self.models_trees.append(model.best_iteration_)
             self.models_list.append(model)
 
             y_hat = model.predict_proba(X_train)[:, 1]
@@ -76,9 +78,10 @@ class Model:
 
         mean_score_train = np.mean(self.scores_list_train)
         mean_score_val = np.mean(self.scores_list_val)
+        avg_num_trees = int(np.mean(self.models_trees))
         print(f"\n\n Mean score train : {np.round(mean_score_train, 4)}\n\n ")
         print(f"\n\n Mean score val : {np.round(mean_score_val, 4)}\n\n ")
-        return mean_score_train, mean_score_val
+        return mean_score_train, mean_score_val, avg_num_trees
 
     def predict(self, X: pd.DataFrame) -> np.array:
         y_hat = np.zeros(X.shape[0])

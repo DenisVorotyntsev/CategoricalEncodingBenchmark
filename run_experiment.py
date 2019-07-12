@@ -44,7 +44,7 @@ def execute_experiment(dataset_name, encoders_list, validation_type, file_name_a
 
         # train models
         lgb_model = Model(cat_validation=validation_type, encoders_names=encoders_tuple, cat_cols=cat_cols)
-        train_score, val_score = lgb_model.fit(X_train, y_train)
+        train_score, val_score, avg_num_trees= lgb_model.fit(X_train, y_train)
         y_hat, test_features = lgb_model.predict(X_test)
         #file_pth = f"./preds/{file_name_apex}_{dataset_name}_{str(encoders_tuple)}.csv"
         #pd.DataFrame({"predictions": y_hat}).to_csv(file_pth, index=False)
@@ -59,7 +59,8 @@ def execute_experiment(dataset_name, encoders_list, validation_type, file_name_a
                                                       "test_score": test_score,
                                                       "time": time_end-time_start,
                                                       "features_before_encoding": X_train.shape[1],
-                                                      "features_after_encoding": test_features
+                                                      "features_after_encoding": test_features,
+                                                      "avg_tress_number": avg_num_trees
                                                       }
 
     for k, v in results[dataset_name].items():

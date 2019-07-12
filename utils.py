@@ -16,8 +16,6 @@ from category_encoders.one_hot import OneHotEncoder
 
 from sklearn.model_selection import StratifiedKFold, RepeatedStratifiedKFold
 
-from MEstimate_ import MEstimateEncoderRight
-
 
 def save_dict_to_file(dic: dict, path: str, save_raw=False) -> None:
     """

@@ -2,7 +2,8 @@
 Benchmarking different approaches for categorical encoding  
 
 # Reproducibility of results
-Used libraries: 
+
+### Requirements 
 
 ```
 numpy==1.15.1
@@ -12,15 +13,19 @@ category_encoders==2.0.0
 lightgbm==2.2.3
 ```
 
+### Benchmark the dataset 
+
 To benchmark endoers for your dataset: 
 
-1. Process the dataset as in `prepare_datasets.ipynb`
+1. Install libraries in requirements
 
-2. Add name of the dataset in `dataset_list` in `run_experiment.py`
+2. Process the dataset as in `prepare_datasets.ipynb`
 
-3. `python run_experiment.py`
+3. Add name of the dataset in `dataset_list` in `run_experiment.py`
 
-4. Run `show_results.ipynb`
+4. `python run_experiment.py`
+
+5. Run `show_results.ipynb`
 
 
 # Used datasets and raw scores 
@@ -31,7 +36,7 @@ Preprocessing of datasets were simple: I removed all time-based columns from dat
 Remaining columns were either categorical or numerical. 
 Details of the experiments could be found [in my blog post](google.com). 
 
-Table 1.1 Used datasets 
+**Table 1.1** Used datasets 
 
 | Name | Total points | Train points | Test points | Number of features | Number of categorical features | Short description | 
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -49,9 +54,9 @@ Table 1.1 Used datasets
 | [Poverty_C](https://www.drivendata.org/competitions/50/worldbank-poverty-prediction/page/99/)   | 29.9k | 17.9k | 11.9k  | 41  | 35 | Predict whether or not a given household for a given country is poor or not |
 
 The ROC AUC scores for each dataset are presented in tables below. 
-*Note*: some experiments required too much memory to run, so some values are missing. 
+**Note**: some experiments required too much memory to run, so some values are missing. 
 
-Table 1.2 None validation 
+**Table 1.2** None validation 
 
 |                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
 |:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
@@ -67,7 +72,7 @@ Table 1.2 None validation
 | TargetEncoder             |    0.7195 |  0.8696 |     0.5003 |   0.7483 |      0.6064 |      0.7971 | 0.6594 | 0.8483          | 0.5428 |      0.4955 |      0.5401 |      0.4751 |
 | WOEEncoder                |    0.7056 |  0.8645 |     0.5012 |   0.7439 |      0.615  |      0.7345 | 0.6398 | 0.844           | 0.5485 |      0.478  |      0.5356 |      0.4671 |
 
-Table 1.3 Single Validation
+**Table 1.3** Single Validation
 
 |                           |   telecom |   adult |   employee |   credit |   mortgages |   promotion | kick   | kdd_upselling   | taxi   |   poverty_A |   poverty_B |   poverty_C |
 |:--------------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
@@ -83,7 +88,7 @@ Table 1.3 Single Validation
 | TargetEncoder             |    0.8388 |  0.9293 |     0.815  |   0.7599 |      0.6702 |      0.9057 | 0.7042 | 0.713           | 0.5894 |      0.7292 |      0.6742 |      0.7207 |
 | WOEEncoder                |    0.8393 |  0.9294 |     0.8325 |   0.7599 |      0.6801 |      0.9056 | 0.7172 | 0.8391          | 0.5903 |      0.7279 |      0.6737 |      0.7224 |
 
-Table 1.4 Double Validation
+**Table 1.4** Double Validation
 
 |                    |   telecom |   adult |   employee |   credit |   mortgages |   promotion |   kick |   kdd_upselling |   taxi |   poverty_A |   poverty_B |   poverty_C |
 |:-------------------|:----------:|:--------:|:-----------:|:---------:|:------------:|:------------:|:-------:|:----------------:|:-------:|:------------:|:------------:|:------------:|
@@ -105,7 +110,7 @@ The encoders performance scores for each type of validation are shown in tables 
 To determine the best validation strategy, I compared the top score of each dataset for each type of validation. 
 The scores improvement (top score for a dataset and an average score for encoder) are shown in table 2.4 and 2.5 below.
 
-Table 2.1 Encoders performance scores - None Validation
+**Table 2.1** Encoders performance scores - None Validation
 
 |                           |      None Validation |
 |:--------------------------|:-------:|
@@ -121,7 +126,7 @@ Table 2.1 Encoders performance scores - None Validation
 | BackwardDifferenceEncoder | 0.4128 |
 | LeaveOneOutEncoder        | 0.0697 |
 
-Table 2.2 Encoders performance scores - Single Validation
+**Table 2.2** Encoders performance scores - Single Validation
 
 |                           |      Single Validation |
 |:--------------------------|:-------:|
@@ -137,7 +142,7 @@ Table 2.2 Encoders performance scores - Single Validation
 | MEstimateEncoder          | 0.8189 |
 | LeaveOneOutEncoder        | 0.0729 |
 
-Table 2.3 Encoders performance scores - Double Validation
+**Table 2.3** Encoders performance scores - Double Validation
 
 |                    |      Double Validation |
 |:-------------------|:-------:|
@@ -149,7 +154,7 @@ Table 2.3 Encoders performance scores - Double Validation
 | MEstimateEncoder   | 0.9686 |
 | FrequencyEncoder   | 0.8018 |
 
-Table 2.4 Top score improvement (percent)
+**Table 2.4** Top score improvement (percent)
 
 |               |   None -> Single |   Single -> Double |
 |:--------------|:-----------------:|:-------------------:|
@@ -167,7 +172,7 @@ Table 2.4 Top score improvement (percent)
 | poverty_C     |             0.48 |              -0.54 |
 
 
-Table 2.5 Encoders performance scores improvement (percent)
+**Table 2.5** Encoders performance scores improvement (percent)
 
 |                           |   None -> Single | Single -> Double   |
 |:--------------------------|:-----------------:|:-------------------:|
