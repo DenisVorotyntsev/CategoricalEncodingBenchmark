@@ -25,13 +25,13 @@ To benchmark endoers for your dataset:
 
 # Used datasets and raw scores 
 
-Table 1.1 Used datasets 
-
 All datasets except poverty_A(B,C) came from different domains; they have a different number of observations, number of categorical and numerical features. 
 The objective for all datasets - binary classification. 
 Preprocessing of datasets were simple: I removed all time-based columns from datasets. 
 Remaining columns were either categorical or numerical. 
 Details of the experiments could be found [in my blog post](google.com). 
+
+Table 1.1 Used datasets 
 
 | Name | Total points | Train points | Test points | Number of features | Number of categorical features | Short description | 
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
