@@ -15,7 +15,7 @@ lightgbm==2.2.3
 
 ### Benchmark the dataset 
 
-To benchmark endoers for your dataset: 
+To benchmark encoders for your dataset: 
 
 1. Install libraries in requirements
 
