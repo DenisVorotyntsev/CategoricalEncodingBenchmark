@@ -35,6 +35,7 @@ def save_dict_to_file(dic: dict, path: str, save_raw=False) -> None:
             f.write("\n\n")
     f.close()
 
+
 def get_single_encoder(encoder_name: str, cat_cols: list):
     """
     Get encoder by its name
@@ -281,7 +282,7 @@ def cat_cols_info(X_train: pd.DataFrame, X_test: pd.DataFrame, cat_cols: List[st
 
 if __name__ == "__main__":
     print("*****************")
-    df  = pd.DataFrame({})
+    df = pd.DataFrame({})
     df["cat_col"] = [1, 2, 3, 1, 2, 3, 1, 1, 1]
     df["target"] = [0, 1, 0, 1, 0, 1, 0, 1, 0]
 

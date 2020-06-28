@@ -6,26 +6,22 @@ Benchmarking different approaches for categorical encoding
 ### Requirements 
 
 ```
-numpy==1.15.1
-pandas==0.23.4
-sklearn==0.20.3
-category_encoders==2.0.0
-lightgbm==2.2.3
+pip install -r requirements.txt
 ```
 
 ### Benchmark the dataset 
 
-To benchmark endoers for your dataset: 
+To benchmark encoders for your dataset: 
 
 1. Install libraries in requirements
 
-2. Process the dataset as in `prepare_datasets.ipynb`
+2. Process the dataset as shown in `notebooks/1-prepare-datasets.ipynb`
 
-3. Add name of the dataset in `dataset_list` in `run_experiment.py`
+3. Add name of the dataset in `dataset_list` in `src/run_experiment.py`
 
 4. `python run_experiment.py`
 
-5. Run `show_results.ipynb`
+5. Run `notebooks/2-show-results.ipynb`
 
 
 # Used datasets and raw scores 

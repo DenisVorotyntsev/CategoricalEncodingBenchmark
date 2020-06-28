@@ -1,14 +1,11 @@
 import pandas as pd
 import numpy as np
-from tqdm import tqdm
 from lightgbm import LGBMClassifier
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score
 from scipy.stats import rankdata
 
-from utils import MultipleEncoder, DoubleValidationEncoderNumerical
-
-from utils import get_single_encoder, cat_cols_info
+from src.utils import MultipleEncoder, DoubleValidationEncoderNumerical
 
 
 class Model:

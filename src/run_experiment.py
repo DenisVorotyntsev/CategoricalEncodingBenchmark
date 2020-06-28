@@ -1,13 +1,13 @@
+import time
+
 import pandas as pd
 import numpy as np
-import time
 from sklearn.model_selection import train_test_split
-from model import Model
 from sklearn.metrics import roc_auc_score
 from sklearn.model_selection import StratifiedKFold
-import itertools
 
-from utils import MultipleEncoder, cat_cols_info, save_dict_to_file
+from src.model import Model
+from src.utils import cat_cols_info, save_dict_to_file
 
 
 def execute_experiment(dataset_name, encoders_list, validation_type, file_name_apex, experiment_description):
